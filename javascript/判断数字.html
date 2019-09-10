@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #numinp,
+    #sumbit{
+      box-sizing: border-box;
+      height: 35px;
+      border: 1px solid red;
+      padding: 0 15px;
+
+    }
+    #sumbit{
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="numinp">
+  <button id="sumbit">点击计算</button>
+  <script>
+    let numinp = document.getElementById('numinp');
+    let sumbit = document.getElementById('sumbit');
+
+    sumbit.onclick = function (){
+      let text = numinp.value;
+      text = Number(text);
+      if(isNaN(text)===false){
+        if(text>0){
+          console.log('正数');
+        }else if(text<0){
+          console.log('负数');
+        }else{
+          console.log('零');
+        }
+      }else{
+        consloe.log('当前输入的信息为非有效数字')
+      }
+    }
+  </script>
+</body>
+</html>
