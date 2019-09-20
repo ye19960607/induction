@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <button id="myBtn">点击我</button>
+  <script type="text/javascript">
+    //兼容所有的浏览器 
+    // addEventlistener  attachEvent
+    var Eventutil = {
+      addHandler: function(element,type,handler){
+        //绑定事件
+        //chrome,firefox,IE9等    --addEventlistener
+        //IE8及以下的浏览器        --attachEvent
+        if(element.addEventlister){
+          element.addEventlistener(type,handler,false);
+        }else if(element.attachEvent){
+          element.attachEvent('on' + type, handler);
+        }else{
+          element['on'+type] = null
+        }
+      }, 
+      removeHandler: function(element,type,handler){
+        //移除事件
+        //chrome,firefox,IE9等    --removeEventlistener
+        //IE8及以下的浏览器        --detachEvent
+        if(element.removeEventlister){
+          element.removeEventlistener(type,handler,false);
+        }else if(element.detachEvent){
+          element.detachEvent('on' + type, handler);
+        }else{
+          element['on'+type] = null
+        }
+      }
+    }
+  </script>
+</body>
+</html>
