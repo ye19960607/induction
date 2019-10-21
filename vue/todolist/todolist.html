@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>todolist</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <input type="text" v-model="mytext">
+  
+    <!-- 双向数据绑定 -->
+
+    <button @click="handleAdd()">add</button>
+
+    <ul>
+      <li v-for="(data,index) in datalist" v-if="data">
+        {{data}}--{{index}}--<button @click="handleDelClick(index)">delete</button>
+      </li>
+    </ul>
+  </div>
+
+  <script type="text/javascript">
+    var vm = new Vue({
+      el:"#box",
+      data:{
+        datalist:[],
+        mytext:"我是初始值"
+      },
+      methods:{
+        //es6对象简写
+        handleAdd(){
+          // console.log(this.text);
+          this.datalist.push(this.mytext)
+        },
+        handleDelClick(index){
+          console.log("del",index)
+          this.datalist.splice(index,1)
+        }
+      }
+    })
+  </script>
+</body>
+</html>
