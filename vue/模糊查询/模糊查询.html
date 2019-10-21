@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <input type="text" @input="handleInput()" v-model="mytext">
+    <ul>
+      <li v-for="data in datalist" :key="data">
+        {{data}}
+      </li>
+    </ul>
+  </div>
+  
+  <script type="text/javascript">
+      var vm = new Vue({
+      el:"#box",
+      data:{
+        datalist:["aaa","bbb","ccc","ddd","add","cee","eee"],
+        list:["aaa","bbb","ccc","ddd","add","cee","eee"],
+        mytext:""
+      },
+      methods:{
+        handleInput(){
+          //过滤
+          console.log(this.mytext)
+          this.datalist = this.list.filter(item=>item.indexOf(this.mytext)>-1)
+        }
+      }
+    })
+  </script>
+</body>
+</html>

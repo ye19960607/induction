@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../vue.js"></script>
+<style>
+.yellow{
+  background-color: yellow;
+}
+.aaa{
+
+}
+.bbb{
+
+}
+</style>
+</head>
+<body>
+  <div id="box">
+    <button @click="handleClick()">change</button>
+    <div :class="classobj">动态设置class的需求--对象写法</div>
+    <div :class="classarr">动态设置class的需求--数组写法</div>
+
+    <div :style="stylearr">动态设置style的需求--对象写法</div>
+    <div :style="stylearr">动态设置style的需求--数组写法</div>
+  </div>
+
+  <script type="text/javascript">
+    var vm = new Vue({
+      el:"#box",
+      data:{
+        classobj:{
+          a:true,
+          b:true,
+          c:false
+        },
+        classarr:['a','b','c'],
+        //使用数组的push splice方法来进行增删
+        styleobj:{
+          backgroundColor:"red" //驼峰命名
+        },
+        stylearr:[{backgroundColor:"red"}]
+      }
+
+    })
+    //Vue.set(vm.classobj,"d",true);  添加新的属性
+  </script>
+</body>
+</html>

@@ -10,7 +10,6 @@
 <body>
   <div id="box">
     <input type="text" v-model="mytext">
-  
     <!-- 双向数据绑定 -->
 
     <button @click="handleAdd()">add</button>
@@ -36,7 +35,7 @@
           this.datalist.push(this.mytext)
         },
         handleDelClick(index){
-          console.log("del",index)
+          // console.log("del",index)
           this.datalist.splice(index,1)
         }
       }
