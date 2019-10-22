@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <p>{{count}}</p>
+    <button @click="handleClick1()">click1-通过函数调用</button>
+    <button @click="handleClick2">click2-通过函数名</button>
+    <button @click="count++">click3-通过表达式</button>
+
+    <ul @click.self="handleUlClick()">
+      <li @click.stop="handleLiClick()">111111</li>
+      <li>222222</li>
+      <li @click.once="handleLiClick3()">333333</li>
+    </ul>
+
+    <a href="http://www.baidu.com" @click.prevent="handleAclick()">跳转页面</a>
+
+    <button @click="isActive && handleBind()">事件解绑</button>
+  </div>
+  
+  <script type="text/javascript">
+      var vm = new Vue({
+      el:"#box",
+      data:{
+        count:1
+      },
+      methods:{
+        handleClick1(){
+          this.count++;
+        },
+        handleClick2(){
+          this.count++;
+        },
+        handleLiClick(){
+          console.log("handleLiClick")
+          //ev.stopPropagation();//阻止冒泡
+        },
+        handleUlClick(){
+          console.log("handleUlClick")
+        },
+        handleAclick(){
+          //ev.prevnentDefault()
+          console.log("handleAclick")
+        },
+        handleLiClick3(){
+          console.log("handleLiClick")
+        },
+        handleBind(){
+          console.log("handleBind")
+        }
+      }
+      
+    })
+  </script>
+</body>
+</html>

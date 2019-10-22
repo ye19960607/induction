@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <!-- {{myname}}
+ 
+    <p>计算属性第一次{{changeword}}</p>
+    <p>计算属性第一次{{changeword}}</p>
+
+    <p>方法第一次{{changewordMethod()}}</p>
+    <p>方法第二次{{changewordMethod()}}</p>
+
+    {{changeword}} -->
+
+    <p>单价<input type="text" v-model="price"></p>
+    <p>数量<input type="text" v-model="number"></p>
+    
+    <p>金额计算{{computedsum}}</p>
+    <!-- number>5?price*number-100:price*number -->
+    <!-- 三元运算符实现当数量大于五时收取100的运费 -->
+  </div>
+  
+  <script type="text/javascript">
+      var vm = new Vue({
+      el:"#box",
+      data:{
+        myname:"kerwin",
+        price:100,
+        number:1
+      },
+      computed:{
+        computedsum(){
+          var sum = 0;
+          if(this.price*this.number<1000){
+            sum=this.price*this.number+100
+          }else{
+            sum=this.price*this.number
+          }
+          return sum;
+        }
+      },
+    })
+      // watch:{
+      //   //监听price，当price变化时总金额小于1000时收取100的运费
+      //   price(){
+      //     console.log("价格变了")
+      //     if(this.price*this.number<1000){
+      //       this.sum=this.price*this.number+100;
+      //     }else{
+      //       this.sum=this.price*this.number
+      //     }
+      //   },
+      //   number(){
+      //     console.log("数量变了")
+      //     if(this.price*this.number<1000){
+      //       this.sum=this.price*this.number+100;
+      //     }else{
+      //       this.sum=this.price*this.number
+      //     }
+      //   }
+      // },
+      // methods:{
+      //   changewordMethod(){
+      //     return this.myname.substring(0,1).toUpperCase()+this.myname.substring(1)
+      //   }
+      // },
+      // computed:{
+      //   changeword(){
+      //     //字符串首字母改大写模板
+      //     return this.myname.substring(0,1).toUpperCase()+this.myname.substring(1)
+      //   }
+      // }
+  </script>
+</body>
+</html>

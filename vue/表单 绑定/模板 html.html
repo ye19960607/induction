@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <input type="text" v-model="mytext">
+    {{mytext}}
+
+    <textarea v-model="mytext"></textarea>
+
+    记住用户名：<input type="checkbox" v-model="isChecked">
+
+    <input type="checkbox" v-model="checkedgroup" value="vue" />vue
+    <input type="checkbox" v-model="checkedgroup" value="react" />react
+    <input type="checkbox" v-model="checkedgroup" value="jquery" />jquery
+
+    {{checkedgroup}}
+    <br/>
+    <input type="radio" v-model="picked" name="favor" value="vue">vue
+    <input type="radio" v-model="picked" name="favor" value="react">react
+    <input type="radio" v-model="picked" name="favor" value="jquery">jquery
+  </div>
+  
+  <script type="text/javascript">
+      var vm = new Vue({
+      data:{
+        name:"xiaoming",
+        mytext:"1111",
+        isChecked:false,
+        checkedgroup:[],
+        picked:""
+      }
+      
+    })
+  </script>
+</body>
+</html>
