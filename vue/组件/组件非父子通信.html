@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <child1></child1>
+    <child2></child2>
+  </div>
+  
+  <script type="text/javascript">
+
+  var bus = new Vue();
+
+  Vue.component("child1",{
+    template:`
+      <div>child1
+        <button @click="handleClick()"></button>
+      </div>
+    `,
+
+    methods:{
+      handleClick(){
+        bus.$emit("kerwin","来自child1的问候")
+      }
+    }
+  })
+
+  Vue.component("child2",{
+    template:`
+      <div>child2
+      
+          <p v-show="isShow">11111111</p>
+      </div>
+    `,
+    data(){
+      return{
+        isShow:false
+      }
+    },
+    mounted(){
+      console.log("mounted");//ajax,事件监听,启动定时器//生命周期
+      bus.$on("kerwin",(data)=>{
+        console.log("接收消息",data);
+        this.isShow = !this.isShow
+      })
+    }
+  })//提前监听好kerwin 事件 bus.$on 
+
+      var vm = new Vue({
+      el:"#box",
+      data:{
+
+      }
+      
+    })
+  </script>
+</body>
+</html>

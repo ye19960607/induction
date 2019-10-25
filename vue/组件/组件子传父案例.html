@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <!-- <navbar></navbar> -->
+    <button @click="isShow=!isShow">show/hide</button>
+    <sidebar v-show="isShow"></sidebar>
+  </div>
+  
+  <script type="text/javascript">
+      Vue.component("navbar",{
+        template:`
+        <div>
+          navber
+          <button>show/hide</button>
+        </div>
+        `
+      })
+      Vue.component("sidebar",{
+        template:`
+        <div style="background:yellow">
+          sideber
+          <ul>
+            <li>1111</li>
+            <li>2222</li>
+            <li>3333</li>
+            <li>4444</li>
+          </ul>
+        </div>
+        `
+      })
+
+      var vm = new Vue({
+      el:"#box",
+      data:{
+        isShow:true
+      }
+      
+    })
+  </script>
+</body>
+</html>

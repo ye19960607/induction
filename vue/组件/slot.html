@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <swiper>
+      <ul>
+        <li v-for="data in datalist">
+          {{data}}
+        </li>
+      </ul>
+    </swiper>
+    <swiper>
+        <ul>
+            <li>1111111</li>
+            <li>2222222</li>
+            <li>3333333</li>
+        </ul>
+    </swiper>
+  </div>
+  
+  <script type="text/javascript">
+  //slot 插槽也叫内容分发 
+    Vue.component("swiper",{
+      template:`
+        <div>
+          <slot></slot> 
+        </div>
+      `
+    })
+
+      var vm = new Vue({
+      el:"#box",
+      data:{
+        datalist:["111","2222","3333"]
+      }
+      
+    })
+  </script>
+</body>
+</html>

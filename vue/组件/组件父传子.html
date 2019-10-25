@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../vue.js"></script>
+  <style>
+    .navbar{
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <navbar myname="首页" :mytext="text"></navbar>
+    <navbar myname="列表"></navbar>
+    <navbar myname="购物车"></navbar>
+  </div>
+  
+  <script type="text/javascript">
+
+      //1.全局定义组件(作用域隔离)
+
+      Vue.component("navbar",{
+        template:`
+          <nav>
+            <button @click="handleBack()">返回</button>
+            <span style="background:yellow">{{title}}-{{myname}}</span>
+            <button>主页</button>
+            <p>{{mytext}}</p>
+          </nav>
+          `, //描述组件的dom结构
+          // props:["myname","mytext"], //通过props
+          //data必须是函数写法必须有返回值
+          props:{
+            myname:String,
+            word:String,
+            myshow:Boolean
+          },
+          data(){
+            return {
+              title:"卖座"
+            }
+          },
+          methods:{
+            handleBack(){
+              console.log("handleBack")
+            }
+          }
+      })
+
+      //vue实例  root component
+      new Vue({
+      el:"#box",
+      data:{
+        text:"来自父组件的叮嘱"
+      }
+      
+    })
+  </script>
+</body>
+</html>

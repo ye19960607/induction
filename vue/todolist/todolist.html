@@ -15,7 +15,7 @@
     <button @click="handleAdd()">add</button>
 
     <ul>
-      <li v-for="(data,index) in datalist" v-if="data">
+      <li v-for="(data,index) in datalist" :key="data">
         {{data}}--{{index}}--<button @click="handleDelClick(index)">delete</button>
       </li>
     </ul>

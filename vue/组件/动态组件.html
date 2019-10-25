@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="box">
+    <keep-alive>
+    <component :is="who"></component>
+    </keep-alive>
+    <footer>
+      <ul>
+        <li><a @click="who='home'">首页</a></li>
+        <li><a @click="who='list'">列表页</a></li>
+        <li><a @click="who='shopcar'">购物车页面</a></li>
+      </ul>
+    </footer>
+  </div>
+  
+  <script type="text/javascript">
+
+    var vm = new Vue({
+      el:"#box",
+      components:{
+        home:{
+          template:`<div>home组件<input type="text"></div>`
+        },
+        list:{
+          template:`<div>list组件</div>`
+        },
+        shopcar:{
+          template:`<div>shopcar组件</div>`
+        }
+      },
+      data:{
+        who:"home"
+      }
+      
+    })
+  </script>
+</body>
+</html>
